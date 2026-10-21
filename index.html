@@ -1,0 +1,550 @@
+<!DOCTYPE html> 
+<html lang="en" class="scroll-smooth"> 
+<head> 
+<meta charset="UTF-8"> 
+<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+<title>AirDrop / Campfire - Legal & Support Hub</title> 
+<!-- Tailwind CSS CDN --> 
+<script src="https://cdn.tailwindcss.com"></script> 
+<script> 
+tailwind.config = { 
+darkMode: 'class', 
+theme: { 
+extend: { 
+colors: { 
+brand: { 
+50: '#eef2ff', 
+100: '#e0e7ff', 
+500: '#6366f1', 
+600: '#4f46e5', 
+700: '#4338ca', 
+900: '#312e81', 
+} 
+}, 
+fontFamily: { 
+sans: ['Inter', 'sans-serif'], 
+} 
+} 
+} 
+} 
+</script> 
+<!-- FontAwesome Icons --> 
+<link rel="stylesheet" 
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"> 
+<!-- Google Fonts --> 
+<link 
+href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;8 
+00;900&display=swap" rel="stylesheet"> 
+<style> 
+body { 
+font-family: 'Inter', sans-serif; 
+} 
+.custom-scrollbar::-webkit-scrollbar { 
+width: 6px; 
+} 
+.custom-scrollbar::-webkit-scrollbar-track { 
+background: transparent; 
+} 
+.custom-scrollbar::-webkit-scrollbar-thumb { 
+background: rgba(156, 163, 175, 0.5); 
+border-radius: 3px; 
+} 
+</style> 
+</head> 
+<body class="bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-slate-100 
+min-h-screen flex flex-col transition-colors duration-300"> 
+<!-- Header Navigation --> 
+<header class="sticky top-0 z-50 backdrop-blur-md bg-white/80 
+dark:bg-slate-900/80 border-b border-slate-200 dark:border-slate-800 
+transition-colors"> 
+<div class="max-w-7×l mx-auto px-4 sm:px-6 lg:px-8"> 
+<div class="flex justify-between items-center h-16"> 
+<!-- Logo --> 
+<div class="flex items-center gap-3 cursor-pointer" onclick="switchTab('about')"> 
+<div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-indigo-600 
+to-violet-500 flex items-center justify-center text-white shadow-lg 
+shadow-indigo-500/30"> 
+<i class="fa-solid font-bold text-lg fa-fire"></i> 
+</div> 
+<div> 
+<span class="font-extrabold text-xl tracking-tight bg-gradient-to-r 
+from-indigo-600 to-violet-500 bg-clip-text text-transparent">Campfire</span> 
+<span class="text-xs font-semibold px-2 py-0.5 ml-1 rounded-full 
+bg-indigo-100 text-indigo-700 dark:bg-indigo-950 
+dark:text-indigo-300">Radar</span> 
+</div> 
+</div> 
+<!-- Desktop Navigation Links --> 
+<nav class="hidden md:flex space-x-1 lg:space-x-2"> 
+<button onclick="switchTab('about')" id="nav-about" class="nav-btn px-3 py-2 
+rounded-lg text-sm font-medium transition-all">About Us</button> 
+<button onclick="switchTab('privacy')" id="nav-privacy" class="nav-btn px-3 py-2 
+rounded-lg text-sm font-medium transition-all">Privacy Policy</button> 
+<button onclick="switchTab('terms')" id="nav-terms" class="nav-btn px-3 py-2 
+rounded-lg text-sm font-medium transition-all">Terms of Service</button> 
+<button onclick="switchTab('faq')" id="nav-faq" class="nav-btn px-3 py-2 
+rounded-lg text-sm font-medium transition-all">FAQ</button> 
+<button onclick="switchTab('help')" id="nav-help" class="nav-btn px-3 py-2 
+rounded-lg text-sm font-medium transition-all">Help Center</button> 
+</nav> 
+<!-- Actions: Dark Mode Toggle & Mobile Menu Switcher --> 
+<div class="flex items-center gap-2"> 
+<button id="theme-toggle" class="p-2.5 rounded-xl border border-slate-200 
+dark:border-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-100 
+dark:hover:bg-slate-800 transition-all"> 
+<i id="theme-toggle-dark-icon" class="hidden fa-solid fa-moon 
+text-indigo-400"></i> 
+<i id="theme-toggle-light-icon" class="hidden fa-solid fa-sun 
+text-amber-500"></i> 
+</button> 
+<button id="mobile-menu-btn" class="md:hidden p-2.5 rounded-xl border 
+border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-300 
+hover:bg-slate-100 dark:hover:bg-slate-800"> 
+<i class="fa-solid fa-bars text-lg"></i> 
+</button> 
+</div> 
+</div> 
+</div> 
+<!-- Mobile Menu Dropdown --> 
+<div id="mobile-menu" class="hidden md:hidden border-b border-slate-200 
+dark:border-slate-800 bg-white dark:bg-slate-900 px-4 pt-2 pb-4 space-y-1"> 
+<button onclick="switchTab('about')" class="mobile-nav-btn w-full text-left px-3 
+py-2.5 rounded-lg text-sm font-medium">About Us</button> 
+<button onclick="switchTab('privacy')" class="mobile-nav-btn w-full text-left px-3 
+py-2.5 rounded-lg text-sm font-medium">Privacy Policy</button> 
+<button onclick="switchTab('terms')" class="mobile-nav-btn w-full text-left px-3 
+py-2.5 rounded-lg text-sm font-medium">Terms of Service</button> 
+<button onclick="switchTab('faq')" class="mobile-nav-btn w-full text-left px-3 py-2.5 
+rounded-lg text-sm font-medium">FAQ</button> 
+<button onclick="switchTab('help')" class="mobile-nav-btn w-full text-left px-3 
+py-2.5 rounded-lg text-sm font-medium">Help Center</button> 
+</div> 
+</header> 
+<!-- Main Content Dynamic Container --> 
+<main class="flex-grow max-w-5×l w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12"> 
+<!-- ================= ABOUT US TAB ================= --> 
+<section id="tab-about" class="tab-content space-y-12"> 
+<!-- Hero --> 
+<div class="text-center space-y-4 max-w-3×l mx-auto"> 
+<span class="px-3 py-1 text-xs font-semibold uppercase tracking-wider 
+text-indigo-600 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-950/60 
+rounded-full border border-indigo-200 dark:border-indigo-800/50">Local Radar 
+Discovery</span> 
+<h1 class="text-3×l sm:text-5×l font-black text-slate-900 dark:text-white 
+tracking-tight">Connect with the world within 100 meters.</h1> 
+<p class="text-lg text-slate-600 dark:text-slate-400 leading-relaxed">Campfire 
+AirDrop brings hyper-local communication to life. Share quick drops, discovery messages, 
+and local updates in real-time with people right around you.</p> 
+</div> 
+<!-- Features Grid --> 
+<div class="grid md:grid-cols-3 gap-6"> 
+<div class="p-6 rounded-2×l bg-white dark:bg-slate-900 border border-slate-200 
+dark:border-slate-800 shadow-sm hover:shadow-md transition"> 
+<div class="w-12 h-12 rounded-xl bg-indigo-100 dark:bg-indigo-950 flex 
+items-center justify-center text-indigo-600 dark:text-indigo-400 mb-4"> 
+<i class="fa-solid fa-radar text-xl"></i> 
+</div> 
+<h3 class="text-lg font-bold text-slate-900 dark:text-white mb-2">Precision 
+Radar</h3> 
+<p class="text-sm text-slate-600 dark:text-slate-400">Location pings scan a 
+strict 100−meter radius, creating zero-clutter local feeds wherever you walk.</p> 
+</div> 
+<div class="p-6 rounded-2×l bg-white dark:bg-slate-900 border border-slate-200 
+dark:border-slate-800 shadow-sm hover:shadow-md transition"> 
+<div class="w-12 h-12 rounded-xl bg-violet-100 dark:bg-violet-950 flex 
+items-center justify-center text-violet-600 dark:text-violet-400 mb-4"> 
+<i class="fa-solid fa-shield-halved text-xl"></i> 
+</div> 
+<h3 class="text-lg font-bold text-slate-900 dark:text-white mb-2">Automated 
+Moderation</h3> 
+<p class="text-sm text-slate-600 dark:text-slate-400">Our 3−strike community 
+reporting system keeps local conversations clean, respectful, and safe.</p> 
+</div> 
+<div class="p-6 rounded-2×l bg-white dark:bg-slate-900 border border-slate-200 
+dark:border-slate-800 shadow-sm hover:shadow-md transition"> 
+<div class="w-12 h-12 rounded-xl bg-emerald-100 dark:bg-emerald-950 flex 
+items-center justify-center text-emerald-600 dark:text-emerald-400 mb-4"> 
+<i class="fa-solid fa-bolt text-xl"></i> 
+</div> 
+<h3 class="text-lg font-bold text-slate-900 dark:text-white mb-2">Ephemeral 
+Drops</h3> 
+<p class="text-sm text-slate-600 dark:text-slate-400">AirDrops expire 
+automatically in 10 minutes to maintain fresh, active local atmosphere at all times.</p> 
+</div> 
+</div> 
+<!-- Stats/Banner --> 
+<div class="rounded-3×l bg-gradient-to-r from-indigo-600 to-violet-600 p-8 
+sm:p-12 text-white shadow-xl text-center sm:text-left sm:flex items-center 
+justify-between"> 
+<div class="space-y-2 mb-6 sm:mb-0"> 
+<h2 class="text-2×l sm:text-3×l font-extrabold">Ready to explore your 
+perimeter?</h2> 
+<p class="text-indigo-100">Download the app on Google Play or App Store 
+today.</p> 
+</div> 
+<button onclick="switchTab('help')" class="px-6 py-3 rounded-xl bg-white 
+text-indigo-700 font-bold hover:bg-slate-100 transition shadow-lg">Get 
+Support</button> 
+</div> 
+</section> 
+<!-- ================= PRIVACY POLICY TAB ================= --> 
+<section id="tab-privacy" class="tab-content hidden space-y-8"> 
+<div class="border-b border-slate-200 dark:border-slate-800 pb-6"> 
+<h1 class="text-3×l font-extrabold text-slate-900 dark:text-white">Privacy 
+Policy</h1> 
+<p class="text-sm text-slate-500 dark:text-slate-400 mt-2">Effective Date: 
+October 2026 • Version 1.2</p> 
+</div> 
+<div class="prose dark:prose-invert max-w-none space-y-6 text-slate-600 
+dark:text-slate-300 leading-relaxed"> 
+<p>At <strong>Campfire AirDrop</strong>, we prioritize your privacy while providing 
+location-aware social experiences. This Privacy Policy details how we collect, process, and 
+protect your information.</p> 
+<div class="p-4 rounded-xl bg-amber-50 dark:bg-amber-950/40 border 
+border-amber-200 dark:border-amber-800/60 text-amber-800 dark:text-amber-300 
+text-sm"> 
+<i class="fa-solid fa-circle-info mr-2"></i> <strong>Key Takeaway:</strong> We 
+do not store historic physical location logs. Your coordinates are used in volatile memory 
+solely to calculate distance relative to nearby drops. 
+</div> 
+<h3 class="text-xl font-bold text-slate-900 dark:text-white mt-6">1. Information We 
+Collect</h3> 
+<ul class="list-disc pl-6 space-y-2"> 
+<li><strong>Account Credentials:</strong> Username, password hash, and email 
+hash (SHA-256 encrypted).</li> 
+<li><strong>Precise Location Data:</strong> GPS coordinates collected while 
+radar is active to calculate nearby drops within 100 meters.</li> 
+<li><strong>Generated Content:</strong> Text status messages ("AirDrops") 
+submitted while broadcasting.</li> 
+<li><strong>Device Metadata:</strong> Basic device identifiers required for 
+secure token validation.</li> 
+</ul> 
+<h3 class="text-xl font-bold text-slate-900 dark:text-white mt-6">2. How 
+Information is Used</h3> 
+<ul class="list-disc pl-6 space-y-2"> 
+<li>To render local AirDrop streams relative to your current location.</li> 
+<li>To enforce community safety guidelines using automated 3−strike moderation 
+and AI filters.</li> 
+<li>To limit spam activities (e.g., daily 10−drop limit for free accounts).</li> 
+</ul> 
+<h3 class="text-xl font-bold text-slate-900 dark:text-white mt-6">3. Data Retention 
+& Expiry</h3> 
+<p>AirDrops automatically self-destruct from active memory after <strong>10 
+minutes</strong>. Unused location pings are automatically purged after 30 minutes of 
+inactivity.</p> 
+<h3 class="text-xl font-bold text-slate-900 dark:text-white mt-6">4. Data Erasure & 
+Account Deletion</h3> 
+<p>You can request complete erasure of your profile and data at any time through 
+the in-app settings or by contacting <a href="mailto:badger.developer.001@gmail.com" 
+class="text-indigo-600 dark:text-indigo-400 
+underline">badger.developer.001@gmail.com</a>.</p> 
+</div> 
+</section> 
+<!-- ================= TERMS & CONDITIONS TAB ================= --> 
+<section id="tab-terms" class="tab-content hidden space-y-8"> 
+<div class="border-b border-slate-200 dark:border-slate-800 pb-6"> 
+<h1 class="text-3×l font-extrabold text-slate-900 dark:text-white">Terms of 
+Service</h1> 
+<p class="text-sm text-slate-500 dark:text-slate-400 mt-2">Last Modified: 
+October 2026</p> 
+</div> 
+<div class="prose dark:prose-invert max-w-none space-y-6 text-slate-600 
+dark:text-slate-300 leading-relaxed"> 
+<p>By downloading, accessing, or using the Campfire AirDrop platform, you agree to 
+be bound by these Terms of Service. Please read them carefully.</p> 
+<h3 class="text-xl font-bold text-slate-900 dark:text-white mt-6">1. Code of 
+Conduct & 3−Strike System</h3> 
+<p>To preserve local community safety, Campfire enforces a strict <strong>3−Strike 
+Policy</strong>:</p> 
+<div class="p-4 rounded-xl bg-slate-100 dark:bg-slate-900 border 
+border-slate-200 dark:border-slate-800 space-y-2"> 
+<p class="text-sm"><strong>Strikes 1 & 2:</strong> System warnings dispatched 
+directly to your feed.</p> 
+<p class="text-sm"><strong>Strike 3:</strong> Automated immediate read-only 
+shadowban / account suspension.</p> 
+</div> 
+<h3 class="text-xl font-bold text-slate-900 dark:text-white mt-6">2. Prohibited 
+Content</h3> 
+<p>You agree not to post or transmit content that:</p> 
+<ul class="list-disc pl-6 space-y-2"> 
+<li>Promotes hate speech, harassment, bullying, or violence against 
+individuals.</li> 
+<li>Contains explicit adult content or illegal substances promotion.</li> 
+<li>Attempts to bypass or flood the local 100m radar mechanism via automated 
+scripts.</li> 
+</ul> 
+<h3 class="text-xl font-bold text-slate-900 dark:text-white mt-6">3. Account Ban 
+Policy</h3> 
+<p>Accounts accumulating 3 verified reports from unique users or AI moderation 
+triggers will lose broadcasting write privileges instantly across all API endpoints.</p> 
+</div> 
+</section> 
+<!-- ================= FAQ TAB ================= --> 
+<section id="tab-faq" class="tab-content hidden space-y-8"> 
+<div class="text-center max-w-2×l mx-auto space-y-4"> 
+<h1 class="text-3×l font-extrabold text-slate-900 dark:text-white">Frequently 
+Asked Questions</h1> 
+<p class="text-slate-600 dark:text-slate-400">Everything you need to know about 
+the Campfire Radar platform.</p> 
+<!-- FAQ Search Box --> 
+<div class="relative mt-4"> 
+<i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 
+text-slate-400"></i> 
+<input type="text" id="faq-search" onkeyup="filterFaqs()" placeholder="Search 
+questions (e.g., strikes, radius, premium)..." class="w-full pl-11 pr-4 py-3 rounded-xl 
+bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 
+focus:outline-none focus:ring-2 focus:ring-indigo-500 text-sm"> 
+</div> 
+</div> 
+<!-- Accordion FAQs --> 
+<div id="faq-list" class="space-y-4 max-w-3×l mx-auto"> 
+<!-- FAQ Item 1 --> 
+<div class="faq-item border border-slate-200 dark:border-slate-800 rounded-2×l 
+bg-white dark:bg-slate-900 overflow-hidden transition"> 
+<button onclick="toggleFaq(this)" class="w-full text-left p-5 flex justify-between 
+items-center font-bold text-slate-900 dark:text-white"> 
+<span>How far does my AirDrop travel?</span> 
+<i class="fa-solid fa-chevron-down text-slate-400 transition-transform"></i> 
+</button> 
+<div class="faq-answer hidden px-5 pb-5 text-slate-600 dark:text-slate-400 
+text-sm border-t border-slate-100 dark:border-slate-800/50 pt-3"> 
+AirDrops scan a precise 100−meter radius around your current location with a 
+27−meter variance buffer for indoor GPS support. 
+</div> 
+</div> 
+<!-- FAQ Item 2 --> 
+<div class="faq-item border border-slate-200 dark:border-slate-800 rounded-2×l 
+bg-white dark:bg-slate-900 overflow-hidden transition"> 
+<button onclick="toggleFaq(this)" class="w-full text-left p-5 flex justify-between 
+items-center font-bold text-slate-900 dark:text-white"> 
+<span>How does the 3−Strike moderation system work?</span> 
+<i class="fa-solid fa-chevron-down text-slate-400 transition-transform"></i> 
+</button> 
+<div class="faq-answer hidden px-5 pb-5 text-slate-600 dark:text-slate-400 
+text-sm border-t border-slate-100 dark:border-slate-800/50 pt-3"> 
+When users report an AirDrop, unique user reports increment a strike counter. 
+Strike 1 & 2 trigger yellow/red warning alerts in your feed. Strike 3 triggers an immediate 
+platform write-lock ban. 
+</div> 
+</div> 
+<!-- FAQ Item 3 --> 
+<div class="faq-item border border-slate-200 dark:border-slate-800 rounded-2×l 
+bg-white dark:bg-slate-900 overflow-hidden transition"> 
+<button onclick="toggleFaq(this)" class="w-full text-left p-5 flex justify-between 
+items-center font-bold text-slate-900 dark:text-white"> 
+<span>How long do drops stay visible?</span> 
+<i class="fa-solid fa-chevron-down text-slate-400 transition-transform"></i> 
+</button> 
+<div class="faq-answer hidden px-5 pb-5 text-slate-600 dark:text-slate-400 
+text-sm border-t border-slate-100 dark:border-slate-800/50 pt-3"> 
+Every AirDrop automatically self-destructs after 10 minutes to ensure 
+conversations stay fresh and hyper-local. 
+</div> 
+</div> 
+<!-- FAQ Item 4 --> 
+<div class="faq-item border border-slate-200 dark:border-slate-800 rounded-2×l 
+bg-white dark:bg-slate-900 overflow-hidden transition"> 
+<button onclick="toggleFaq(this)" class="w-full text-left p-5 flex justify-between 
+items-center font-bold text-slate-900 dark:text-white"> 
+<span>What is the free drop limit?</span> 
+<i class="fa-solid fa-chevron-down text-slate-400 transition-transform"></i> 
+</button> 
+<div class="faq-answer hidden px-5 pb-5 text-slate-600 dark:text-slate-400 
+text-sm border-t border-slate-100 dark:border-slate-800/50 pt-3"> 
+Standard accounts get 10 free AirDrops per day, which reset every midnight UTC. 
+Upgrading to Premium unlocks unlimited drops. 
+</div> 
+</div> 
+</div> 
+</section> 
+<!-- ================= HELP CENTER TAB ================= --> 
+<section id="tab-help" class="tab-content hidden space-y-12"> 
+<div class="text-center max-w-2×l mx-auto space-y-3"> 
+<h1 class="text-3×l font-extrabold text-slate-900 dark:text-white">Help & Support 
+Center</h1> 
+<p class="text-slate-600 dark:text-slate-400">Encountering issues or have 
+questions regarding account status? Contact our operations team.</p> 
+</div> 
+<div class="grid md:grid-cols-2 gap-8 items-start"> 
+<!-- Support Info Cards --> 
+<div class="space-y-4"> 
+<div class="p-6 rounded-2×l bg-white dark:bg-slate-900 border 
+border-slate-200 dark:border-slate-800 flex items-start gap-4"> 
+<div class="w-10 h-10 rounded-xl bg-indigo-100 dark:bg-indigo-950 flex 
+items-center justify-center text-indigo-600 dark:text-indigo-400 shrink-0"> 
+<i class="fa-solid fa-envelope"></i> 
+</div> 
+<div> 
+<h4 class="font-bold text-slate-900 dark:text-white">Direct Email</h4> 
+<p class="text-xs text-slate-500 mb-2">Support response time: &lt; 24 hrs</p> 
+<a href="mailto:badger.developer.001@gmail.com" class="text-sm 
+font-semibold text-indigo-600 dark:text-indigo-400 
+hover:underline">badger.developer.001@gmail.com</a> 
+</div> 
+</div> 
+<div class="p-6 rounded-2×l bg-white dark:bg-slate-900 border 
+border-slate-200 dark:border-slate-800 flex items-start gap-4"> 
+<div class="w-10 h-10 rounded-xl bg-violet-100 dark:bg-violet-950 flex 
+items-center justify-center text-violet-600 dark:text-violet-400 shrink-0"> 
+<i class="fa-solid fa-ban"></i> 
+</div> 
+<div> 
+<h4 class="font-bold text-slate-900 dark:text-white">Appeal a Ban</h4> 
+<p class="text-sm text-slate-600 dark:text-slate-400">If your account 
+received 3 strikes in error, submit an appeal including your username and identity footprint 
+hash.</p> 
+</div> 
+</div> 
+</div> 
+<!-- Support Form --> 
+<div class="p-6 sm:p-8 rounded-3×l bg-white dark:bg-slate-900 border 
+border-slate-200 dark:border-slate-800 shadow-xl"> 
+<form id="support-form" onsubmit="handleSupportSubmit(event)" 
+class="space-y-4"> 
+<h3 class="text-xl font-bold text-slate-900 dark:text-white mb-2">Send a 
+Support Ticket</h3> 
+<div> 
+<label class="block text-xs font-bold uppercase text-slate-500 
+mb-1">Username / Identifier</label> 
+<input type="text" required placeholder="@username" class="w-full px-4 
+py-2.5 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 
+dark:border-slate-700 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"> 
+</div> 
+<div> 
+<label class="block text-xs font-bold uppercase text-slate-500 mb-1">Email 
+Address</label> 
+<input type="email" required placeholder="you@domain.com" class="w-full 
+px-4 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 
+dark:border-slate-700 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"> 
+</div> 
+<div> 
+<label class="block text-xs font-bold uppercase text-slate-500 
+mb-1">Subject</label> 
+<select class="w-full px-4 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-800 
+border border-slate-200 dark:border-slate-700 text-sm focus:outline-none focus:ring-2 
+focus:ring-indigo-500"> 
+<option>Account Ban Appeal</option> 
+<option>Bug / Technical Issue</option> 
+<option>Premium Subscription Inquiry</option> 
+<option>Privacy / Data Removal Request</option> 
+</select> 
+</div> 
+<div> 
+<label class="block text-xs font-bold uppercase text-slate-500 
+mb-1">Message</label> 
+<textarea rows="4" required placeholder="Explain your issue in detail..." 
+class="w-full px-4 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-800 border 
+border-slate-200 dark:border-slate-700 text-sm focus:outline-none focus:ring-2 
+focus:ring-indigo-500"></textarea> 
+</div> 
+<button type="submit" class="w-full py-3 rounded-xl bg-indigo-600 
+hover:bg-indigo-700 text-white font-bold text-sm shadow-lg shadow-indigo-600/30 
+transition">Submit Support Request</button> 
+</form> 
+<div id="support-success" class="hidden text-center py-8 space-y-3"> 
+<div class="w-12 h-12 rounded-full bg-emerald-100 text-emerald-600 flex 
+items-center justify-center mx-auto text-xl"> 
+<i class="fa-solid fa-check"></i> 
+</div> 
+<h4 class="text-lg font-bold text-slate-900 dark:text-white">Ticket 
+Submitted!</h4> 
+<p class="text-sm text-slate-600 dark:text-slate-400">Our operations team will 
+evaluate your case and reach out shortly.</p> 
+</div> 
+</div> 
+</div> 
+</section> 
+</main> 
+<!-- Footer --> 
+<footer class="mt-auto border-t border-slate-200 dark:border-slate-800 bg-white 
+dark:bg-slate-900 py-8 text-xs text-slate-500 dark:text-slate-400"> 
+<div class="max-w-5×l mx-auto px-4 flex flex-col sm:flex-row justify-between 
+items-center gap-4"> 
+<p>© 2026 Campfire AirDrop. All rights reserved.</p> 
+<div class="flex space-x-4"> 
+<button onclick="switchTab('privacy')" class="hover:underline">Privacy</button> 
+<button onclick="switchTab('terms')" class="hover:underline">Terms</button> 
+<button onclick="switchTab('help')" class="hover:underline">Support</button> 
+</div> 
+</div> 
+</footer> 
+<!-- Interactive Logic Script --> 
+<script> 
+// Tab switching logic 
+function switchTab(tabId) { 
+// Hide all tab contents 
+document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden')); 
+// Show target tab 
+const target = document.getElementById('tab-' + tabId); 
+if (target) target.classList.remove('hidden'); 
+// Reset navigation highlight styles 
+document.querySelectorAll('.nav-btn, .mobile-nav-btn').forEach(btn => { 
+btn.classList.remove('bg-indigo-50', 'dark:bg-indigo-950', 'text-indigo-600', 
+'dark:text-indigo-400', 'font-bold'); 
+btn.classList.add('text-slate-600', 'dark:text-slate-400'); 
+}); 
+// Highlight desktop nav item 
+const activeNav = document.getElementById('nav-' + tabId); 
+if (activeNav) { 
+activeNav.classList.add('bg-indigo-50', 'dark:bg-indigo-950', 'text-indigo-600', 
+'dark:text-indigo-400', 'font-bold'); 
+} 
+// Close mobile dropdown if open 
+document.getElementById('mobile-menu').classList.add('hidden'); 
+// Scroll to top smooth 
+window.scrollTo({ top: 0, behavior: 'smooth' }); 
+} 
+// Mobile menu toggle 
+document.getElementById('mobile-menu-btn').addEventListener('click', () => { 
+document.getElementById('mobile-menu').classList.toggle('hidden'); 
+}); 
+// FAQ Toggle 
+function toggleFaq(btn) { 
+const answer = btn.nextElementSibling; 
+const icon = btn.querySelector('.fa-chevron-down'); 
+answer.classList.toggle('hidden'); 
+icon.classList.toggle('rotate-180'); 
+} 
+// FAQ Filter 
+function filterFaqs() { 
+const query = document.getElementById('faq-search').value.toLowerCase(); 
+document.querySelectorAll('.faq-item').forEach(item => { 
+const text = item.textContent.toLowerCase(); 
+item.style.display = text.includes(query) ? 'block' : 'none'; 
+}); 
+} 
+// Support Form Mock Submission 
+function handleSupportSubmit(e) { 
+e.preventDefault(); 
+document.getElementById('support-form').classList.add('hidden'); 
+document.getElementById('support-success').classList.remove('hidden'); 
+} 
+// Theme Toggle (Dark / Light mode) 
+const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon'); 
+const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon'); 
+if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && 
+window.matchMedia('(prefers-color-scheme: dark)').matches)) { 
+document.documentElement.classList.add('dark'); 
+themeToggleLightIcon.classList.remove('hidden'); 
+} else { 
+document.documentElement.classList.remove('dark'); 
+themeToggleDarkIcon.classList.remove('hidden'); 
+} 
+document.getElementById('theme-toggle').addEventListener('click', function() { 
+themeToggleDarkIcon.classList.toggle('hidden'); 
+themeToggleLightIcon.classList.toggle('hidden'); 
+if (document.documentElement.classList.contains('dark')) { 
+document.documentElement.classList.remove('dark'); 
+localStorage.setItem('color-theme', 'light'); 
+} else { 
+document.documentElement.classList.add('dark'); 
+localStorage.setItem('color-theme', 'dark'); 
+} 
+}); 
+// Initialize Default Tab 
+window.addEventListener('DOMContentLoaded', () => { 
+switchTab('about'); 
+}); 
+</script> 
+</body> 
+</html> 
